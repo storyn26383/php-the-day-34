@@ -10,8 +10,35 @@ use IteratorAggregate;
 
 class Magic
 {
-    public function magic()
+    protected $data;
+
+    public function __construct(array $data = [])
     {
-        return 'magic';
+        $this->data = $data;
+    }
+
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function __get($key)
+    {
+        return $this->data[$key] ?? null;
+    }
+
+    public function __set($key, $value)
+    {
+        $this->data[$key] = $value;
+    }
+
+    public function __isset($key)
+    {
+        return isset($this->data[$key]);
+    }
+
+    public function __unset($key)
+    {
+        unset($this->data[$key]);
     }
 }
