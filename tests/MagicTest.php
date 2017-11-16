@@ -52,4 +52,18 @@ class MagicTest extends TestCase
     {
         $this->assertEquals('Hello Kitty', Magic::name('Kitty')->greet());
     }
+
+    public function testToString()
+    {
+        $magic = new Magic($data = ['foo' => 'bar']);
+
+        $this->assertEquals(json_encode($data), (string) $magic);
+    }
+
+    public function testInvoke()
+    {
+        $magic = new Magic($data = ['foo' => 'bar']);
+
+        $this->assertEquals($data, $magic());
+    }
 }

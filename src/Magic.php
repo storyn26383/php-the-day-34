@@ -51,4 +51,14 @@ class Magic
     {
         return (new static)->$method(...$args);
     }
+
+    public function __toString()
+    {
+        return json_encode($this->data);
+    }
+
+    public function __invoke()
+    {
+        return $this->data;
+    }
 }
