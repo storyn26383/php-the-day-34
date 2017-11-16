@@ -40,4 +40,16 @@ class MagicTest extends TestCase
 
         $this->assertArrayNotHasKey('foo', $magic->getData());
     }
+
+    public function testCall()
+    {
+        $magic = new Magic;
+
+        $this->assertEquals('Hello Kitty', $magic->name('Kitty')->greet());
+    }
+
+    public function testCallStatic()
+    {
+        $this->assertEquals('Hello Kitty', Magic::name('Kitty')->greet());
+    }
 }

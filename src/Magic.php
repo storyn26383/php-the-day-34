@@ -41,4 +41,14 @@ class Magic
     {
         unset($this->data[$key]);
     }
+
+    public function __call($method, $args)
+    {
+        return (new Amazing)->$method(...$args);
+    }
+
+    public static function __callStatic($method, $args)
+    {
+        return (new static)->$method(...$args);
+    }
 }
