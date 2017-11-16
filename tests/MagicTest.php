@@ -66,4 +66,37 @@ class MagicTest extends TestCase
 
         $this->assertEquals($data, $magic());
     }
+
+    public function testOffsetGet()
+    {
+        $magic = new Magic(['foo' => 'bar']);
+
+        $this->assertEquals('bar', $magic['foo']);
+    }
+
+    public function testOffsetSet()
+    {
+        $magic = new Magic;
+
+        $magic['foo'] = 'bar';
+
+        $this->assertEquals('bar', $magic['foo']);
+    }
+
+    public function testOffsetExists()
+    {
+        $magic = new Magic(['foo' => 'bar']);
+
+        $this->assertTrue(isset($magic['foo']));
+        $this->assertFalse(isset($magic['bar']));
+    }
+
+    public function testOffsetUnset()
+    {
+        $magic = new Magic(['foo' => 'bar']);
+
+        unset($magic['foo']);
+
+        $this->assertFalse(in_array('foo', array_keys($magic->getData())));
+    }
 }

@@ -8,7 +8,7 @@ use ArrayIterator;
 use JsonSerializable;
 use IteratorAggregate;
 
-class Magic
+class Magic implements ArrayAccess
 {
     protected $data;
 
@@ -60,5 +60,25 @@ class Magic
     public function __invoke()
     {
         return $this->data;
+    }
+
+    public function offsetGet($key)
+    {
+        return $this->data[$key];
+    }
+
+    public function offsetSet($key, $value)
+    {
+        $this->data[$key] = $value;
+    }
+
+    public function offsetExists($key)
+    {
+        return isset($this->data[$key]);
+    }
+
+    public function offsetUnset($key)
+    {
+        unset($this->data[$key]);
     }
 }
