@@ -8,7 +8,7 @@ use ArrayIterator;
 use JsonSerializable;
 use IteratorAggregate;
 
-class Magic implements ArrayAccess, Countable, IteratorAggregate
+class Magic implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable
 {
     protected $data;
 
@@ -90,5 +90,10 @@ class Magic implements ArrayAccess, Countable, IteratorAggregate
     public function getIterator()
     {
         return new ArrayIterator($this->data);
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->data;
     }
 }

@@ -115,4 +115,11 @@ class MagicTest extends TestCase
             $this->assertEquals($data[$key], $value);
         }
     }
+
+    public function testJsonSerialize()
+    {
+        $magic = new Magic($data = ['foo' => 'bar']);
+
+        $this->assertEquals(json_encode($data), json_encode($magic));
+    }
 }
