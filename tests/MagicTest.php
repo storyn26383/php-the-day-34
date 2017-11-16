@@ -106,4 +106,13 @@ class MagicTest extends TestCase
 
         $this->assertEquals(1, count($magic));
     }
+
+    public function testGetIterator()
+    {
+        $magic = new Magic($data = ['foo' => 'bar']);
+
+        foreach ($magic as $key => $value) {
+            $this->assertEquals($data[$key], $value);
+        }
+    }
 }
