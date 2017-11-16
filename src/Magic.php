@@ -8,7 +8,7 @@ use ArrayIterator;
 use JsonSerializable;
 use IteratorAggregate;
 
-class Magic implements ArrayAccess
+class Magic implements ArrayAccess, Countable
 {
     protected $data;
 
@@ -80,5 +80,10 @@ class Magic implements ArrayAccess
     public function offsetUnset($key)
     {
         unset($this->data[$key]);
+    }
+
+    public function count()
+    {
+        return count($this->data);
     }
 }

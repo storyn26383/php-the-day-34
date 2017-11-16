@@ -99,4 +99,11 @@ class MagicTest extends TestCase
 
         $this->assertFalse(in_array('foo', array_keys($magic->getData())));
     }
+
+    public function testCount()
+    {
+        $magic = new Magic(['foo' => 'bar']);
+
+        $this->assertEquals(1, count($magic));
+    }
 }
